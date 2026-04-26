@@ -84,18 +84,226 @@
 
     /* Smooth scroll */
     html { scroll-behavior: smooth; }
+
+    /* ========== NOUVELLES ANIMATIONS ========== */
+    
+    /* Animation fade-in-up */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation fade-in-left */
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Animation fade-in-right */
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Animation scale-in */
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Animation pour la navbar */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation pour les icônes de services */
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Classes d'animation */
+    .animate-navbar {
+      animation: slideDown 0.6s ease-out;
+    }
+
+    .animate-hero {
+      animation: scaleIn 0.8s ease-out;
+    }
+
+    .animate-fade-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-left {
+      opacity: 0;
+      animation: fadeInLeft 0.8s ease-out forwards;
+    }
+
+    .animate-fade-right {
+      opacity: 0;
+      animation: fadeInRight 0.8s ease-out forwards;
+    }
+
+    .animate-scale {
+      opacity: 0;
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+
+    /* Delays */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+
+    /* Animation sur les cartes au scroll */
+    .service-card, .real-card, .footer-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .service-card.visible, .real-card.visible, .footer-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animation sur les icônes de services au hover */
+    .service-card:hover svg {
+      animation: iconFloat 0.5s ease-in-out;
+    }
+
+    /* Animation sur les liens du footer */
+    footer a {
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    footer a:hover {
+      transform: translateX(5px);
+      color: white;
+    }
+
+    /* Animation sur le séparateur */
+    .section-sep {
+      transition: width 0.4s ease;
+    }
+
+    section:hover .section-sep {
+      width: 100px;
+    }
+
+    /* Animation sur les check icons */
+    .check-icon {
+      transition: all 0.3s ease;
+    }
+
+    .check-icon:hover {
+      transform: scale(1.2);
+      background: #f0a500;
+    }
+
+    /* Animation sur les liens de navigation */
+    nav ul li a {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a:not(.nav-active):hover {
+      transform: translateY(-2px);
+      color: #1a3a8f;
+    }
+
+    /* Animation sur le logo */
+    .logo-icon {
+      transition: all 0.3s ease;
+    }
+
+    .logo-icon:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+   
+
+    /* Animation sur les cartes de réalisation */
+    .real-card .label {
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .real-card:hover .label {
+      transform: translateY(0);
+    }
+
+    /* Animation sur les images de la section présentation */
+    .presentation-image {
+      transition: all 0.5s ease;
+    }
+
+    .presentation-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Animation de pulse sur le CTA */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .cta-button {
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      animation: pulse 0.5s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
   <!-- ======= NAVBAR ======= -->
-  <nav class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <nav class="w-full bg-white shadow-sm sticky top-0 z-50 animate-navbar">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex items-center gap-2 select-none">
 
 <!-- ICON -->
-      <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-md">
+      <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-md logo-icon cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" 
             class="w-5 h-5 text-white" 
             fill="none" 
@@ -147,7 +355,7 @@
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-6 pb-4">
       <ul class="flex flex-col gap-3 pt-3 text-sm font-heading font-semibold text-gray-700">
         <li><a href="/" class="text-brand">Accueil</a></li>
-        <li><a href="#presentation">Présentation</a></li>
+        <li><a href="{{ route('presentations')}}">Présentation</a></li>
         <li><a href="{{ route('realisations') }}">Realisations</a></li>
         <li><a href="{{route('services')}}">Services</a></li>
         <li><a href="{{ route('contact') }}">Contact</a></li>
@@ -181,17 +389,17 @@
       <div class="hero-overlay absolute inset-0"></div>
     </div>
     <!-- Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full animate-hero">
       <div class="max-w-xl">
-        <h1 class="text-white text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+        <h1 class="text-white text-4xl md:text-5xl font-extrabold leading-tight mb-4 animate-fade-left">
           Construire avec<br>confiance et expertise
         </h1>
-        <p class="text-blue-100 text-base md:text-lg mb-8 font-body">
+        <p class="text-blue-100 text-base md:text-lg mb-8 font-body animate-fade-left delay-200">
           Votre partenaire BTP pour des projets durables.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 animate-fade-up delay-300">
          
-          <a href="{{ route('realisations')}}" class="border-2 border-white text-white font-heading font-semibold text-sm px-6 py-3 rounded hover:bg-white hover:text-brand transition-colors">
+          <a href="{{ route('realisations')}}" class="border-2 border-white text-white font-heading font-semibold text-sm px-6 py-3 rounded hover:bg-white hover:text-brand transition-colors cta-button">
             Nos réalisations
           </a>
         </div>
@@ -203,29 +411,29 @@
   <section id="presentation" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <!-- Text -->
-      <div>
+      <div class="animate-fade-left">
         <h2 class="text-2xl font-heading font-bold text-brand mb-5">Qui sommes-nous ?</h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6">
           Une entreprise BTP avec plus de <strong class="text-brand">10 ans d'expérience</strong> dans le secteur.
           Nous réalisons vos projets avec rigueur et expertise.
         </p>
         <ul class="space-y-3">
-          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold">
+          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold animate-fade-up delay-100">
             <span class="check-icon"></span>
             10+ ans d'expérience
           </li>
-          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold">
+          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold animate-fade-up delay-200">
             <span class="check-icon"></span>
             Projets clés en main
           </li>
-          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold">
+          <li class="flex items-center gap-3 text-sm text-gray-700 font-semibold animate-fade-up delay-300">
             <span class="check-icon"></span>
             Respect des délais
           </li>
         </ul>
       </div>
       <!-- Image -->
-      <div class="rounded-lg overflow-hidden shadow-md">
+      <div class="rounded-lg overflow-hidden shadow-md presentation-image animate-fade-right">
         <img
           src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&q=80"
           alt="Équipe BTP"
@@ -240,7 +448,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10">
         <div class="section-sep"></div>
-        <h2 class="text-2xl font-heading font-bold text-brand">Nos Services</h2>
+        <h2 class="text-2xl font-heading font-bold text-brand animate-scale">Nos Services</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
 
@@ -290,88 +498,69 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-10">
             <div class="section-sep"></div>
-            <h2 class="text-2xl font-heading font-bold text-brand">
+            <h2 class="text-2xl font-heading font-bold text-brand animate-scale">
                 Nos Réalisations
             </h2>
         </div>
 
+        @php use Illuminate\Support\Str; @endphp
+
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-            @foreach($realisations as $realisation)
+            @forelse($realisations as $index => $realisation)
                 <a href="{{ route('realisations.show', $realisation->id) }}" class="block">
-                    <div class="real-card aspect-[4/3]">
-                        <img 
-                            src="{{ asset('storage/'.$realisation->image) }}" 
-                            alt="{{ $realisation->titre }}" 
-                            class="w-full h-full object-cover"
-                        />
+                    <div class="real-card aspect-[4/3] rounded-xl overflow-hidden" style="transition-delay: {{ $index * 0.1 }}s">
+
+                        <img src="{{ asset('storage/' . $realisation->image) }}"
+                            alt="{{ $realisation->title }}"
+                            class="w-full h-full object-cover"/>
+
                         <div class="label">
-                            {{ $realisation->titre }}
+                            {{ Str::limit($realisation->title, 40) }}
                         </div>
+
                     </div>
                 </a>
-            @endforeach
+            @empty
+                <p class="col-span-4 text-center text-gray-500">
+                    Aucune réalisation disponible.
+                </p>
+            @endforelse
 
         </div>
     </div>
 </section>
-  <!-- <section id="realisations" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-10">
-        <div class="section-sep"></div>
-        <h2 class="text-2xl font-heading font-bold text-brand">Nos Réalisations</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="real-card aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Immeuble Moderne" class="w-full h-full object-cover"/>
-          <div class="label">Immeuble Modene</div>
-        </div>
-        <div class="real-card aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Paris Construction" class="w-full h-full object-cover"/>
-          <div class="label">Paris - Construction</div>
-        </div>
-        <div class="real-card aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Villa Contemporaine" class="w-full h-full object-cover"/>
-          <div class="label">Villa Contemporaine</div>
-        </div>
-        <div class="real-card aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Bureau Rénovation" class="w-full h-full object-cover"/>
-          <div class="label">Bureau - Rénovation</div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
- <!-- ======= CONTACT ======= -->
-<!-- ======= CONTACT ======= -->
-
-
 
 <!-- ======= FOOTER PREMIUM ======= -->
-<footer class="bg-brand-dark text-white pt-20 pb-10">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+<footer class="bg-brand-dark text-white pt-16 pb-6">
+
+  <!-- TOP FOOTER -->
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
 
     <!-- BRAND -->
-    <div>
-      <h3 class="text-2xl font-heading font-bold mb-4">Entreprise BTP</h3>
-      <p class="text-blue-300 text-sm leading-relaxed mb-6">
-        Spécialistes en construction et rénovation, nous réalisons vos projets
-        avec exigence, qualité et savoir-faire.
+    <div class="footer-section">
+      <h3 class="text-xl font-heading font-bold mb-4">
+        Entreprise BTP
+      </h3>
+
+      <p class="text-blue-300 text-sm leading-relaxed mb-5">
+        Spécialistes en construction et rénovation,
+        nous réalisons vos projets avec exigence et savoir-faire.
       </p>
 
       <!-- Social -->
-      <div class="flex gap-4">
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">f</div>
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">in</div>
-        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">ig</div>
+      <div class="flex gap-3">
+        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">f</div>
+        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">in</div>
+        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">ig</div>
       </div>
     </div>
 
-    <!-- NAV -->
-    <div>
-      <h4 class="font-heading font-semibold mb-5">Navigation</h4>
-      <ul class="space-y-3 text-blue-300 text-sm">
-        <li><a href="#presentation" class="hover:text-white transition">Présentation</a></li>
+    <!-- NAVIGATION -->
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-2 text-blue-300 text-sm">
+        <li><a href="{{ route('presentations') }}" class="hover:text-white transition">Présentation</a></li>
         <li><a href="{{ route('realisations')}}" class="hover:text-white transition">Réalisations</a></li>
         <li><a href="{{ route('services')}}" class="hover:text-white transition">Services</a></li>
         <li><a href="{{ route('contact')}}" class="hover:text-white transition">Contact</a></li>
@@ -379,37 +568,50 @@
     </div>
 
     <!-- CONTACT -->
-    <div>
-      <h4 class="font-heading font-semibold mb-5">Contact</h4>
-      <ul class="space-y-3 text-blue-300 text-sm">
-        <li>📞 01 23 45 67 89</li>
-        <li>✉️ info@entreprisebtp.com</li>
-        <li>📍 Paris, France</li>
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Contact</h4>
+      <ul class="space-y-2 text-blue-300 text-sm">
+        <li>📞 {{ $company->phone ?? '' }}</li>
+        <li>✉️ {{ $company->email ?? '' }}</li>
+        <li>📍 {{ $company->address ?? '' }}</li>
       </ul>
     </div>
 
+   
+
     <!-- CTA -->
-    <div>
-      <h4 class="font-heading font-semibold mb-5">Un projet ?</h4>
-      <p class="text-blue-300 text-sm mb-6">
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Un projet ?</h4>
+      <p class="text-blue-300 text-sm mb-4">
         Obtenez un devis gratuit rapidement.
       </p>
-     
+
+      <a href="{{ route('contact') }}"
+         class="inline-block bg-blue-500 hover:bg-blue-600 text-white text-sm px-5 py-2 rounded-md transition cta-button">
+        Demander un devis
+      </a>
     </div>
 
   </div>
 
-  <!-- BOTTOM -->
-  <div class="border-t border-blue-700 mt-14 pt-6 flex flex-col md:flex-row justify-between items-center text-blue-400 text-sm gap-4">
-    <span>© 2026 Entreprise BTP — Tous droits réservés</span>
+  <!-- BOTTOM FOOTER -->
+  <div class="border-t border-white/10 mt-10 pt-5">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-blue-400 text-sm text-center">
 
-    <div class="flex gap-6">
-      <a href="#" class="hover:text-white transition">Mentions légales</a>
-      <a href="#" class="hover:text-white transition">Confidentialité</a>
+      <span>© 2026 Entreprise BTP — Tous droits réservés</span>
+
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white transition">Mentions légales</a>
+        <span class="hidden md:inline">|</span>
+        <a href="#" class="hover:text-white transition">Confidentialité</a>
+      </div>
+
     </div>
   </div>
+
 </footer>
-  <script>
+
+<script>
     // Mobile menu toggle
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -422,7 +624,41 @@
       setTimeout(() => msg.classList.add('hidden'), 4000);
     }
 
-   
+    // ========== NOUVEAU: Animation au scroll ==========
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observer les cartes de services
+    document.querySelectorAll('.service-card, .real-card, .footer-section').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Animation supplémentaire pour les titres de section
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          titleObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('h2').forEach(el => {
+      if (el.classList.contains('animate-scale')) {
+        titleObserver.observe(el);
+      }
+    });
   </script>
 </body>
 </html>

@@ -37,6 +37,11 @@
       background: #1a3a8f;
       border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .check-icon:hover {
+      transform: scale(1.2);
+      background: #f0a500;
     }
     .check-icon::after {
       content: '';
@@ -69,7 +74,7 @@
       width: 100%;
       outline: none;
       background: #fff;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       box-sizing: border-box;
     }
     
@@ -79,9 +84,10 @@
       resize: vertical;
     }
     
-    input:focus, textarea:focus, select:focus { border-color: #1a3a8f; box-shadow: 0 0 0 3px rgba(26,58,143,0.1); }
+    input:focus, textarea:focus, select:focus { border-color: #1a3a8f; box-shadow: 0 0 0 3px rgba(26,58,143,0.1); transform: scale(1.02); }
     .nav-active { border-bottom: 2px solid #1a3a8f; color: #1a3a8f !important; }
-    .section-sep { width: 60px; height: 3px; background: #1a3a8f; margin: 0 auto 18px; border-radius: 2px; }
+    .section-sep { width: 60px; height: 3px; background: #1a3a8f; margin: 0 auto 18px; border-radius: 2px; transition: width 0.4s ease; }
+    section:hover .section-sep { width: 100px; }
     html { scroll-behavior: smooth; }
     
     /* FAQ accordion styles */
@@ -90,10 +96,10 @@
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
     .faq-item.active .faq-answer { max-height: 300px; }
     .faq-item.active .faq-icon { transform: rotate(180deg); }
-    .faq-icon { transition: transform 0.2s; }
+    .faq-icon { transition: transform 0.3s ease; }
     
     /* Office card hover */
-    .office-card { transition: all 0.2s; }
+    .office-card { transition: all 0.3s ease; }
     .office-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
 
     /* MODALE STYLES */
@@ -140,6 +146,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
+      transition: all 0.3s ease;
     }
     .modal-icon svg {
       width: 32px;
@@ -166,11 +173,12 @@
       border-radius: 40px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.3s ease;
       font-family: 'Montserrat', sans-serif;
     }
     .modal-btn:hover {
       background: #122970;
+      transform: scale(1.05);
     }
 
     /* Spinner de chargement */
@@ -190,6 +198,123 @@
     .btn-loading {
       opacity: 0.7;
       cursor: not-allowed;
+    }
+
+    /* ========== NOUVELLES ANIMATIONS ========== */
+    
+    /* Keyframes */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Animation classes */
+    .animate-navbar { animation: slideDown 0.6s ease-out; }
+    .animate-fade-up { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-fade-left { opacity: 0; animation: fadeInLeft 0.8s ease-out forwards; }
+    .animate-fade-right { opacity: 0; animation: fadeInRight 0.8s ease-out forwards; }
+    .animate-scale { opacity: 0; animation: scaleIn 0.6s ease-out forwards; }
+    
+    /* Delays */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+
+    /* Scroll animations */
+    .faq-item, .footer-section, .office-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .faq-item.visible, .footer-section.visible, .office-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover animations */
+    footer a { transition: all 0.3s ease; position: relative; display: inline-block; }
+    footer a:hover { transform: translateX(5px); color: white; }
+    .logo-icon { transition: all 0.3s ease; cursor: pointer; }
+    .logo-icon:hover { transform: rotate(5deg) scale(1.05); }
+
+    nav ul li a { transition: all 0.3s ease; position: relative; }
+    nav ul li a:not(.nav-active):hover { transform: translateY(-2px); color: #1a3a8f; }
+    .cta-button { transition: all 0.3s ease; }
+    .cta-button:hover { animation: pulse 0.5s ease-in-out; }
+    
+    /* Form field animation on focus */
+    .form-field {
+      transition: all 0.3s ease;
+    }
+    
+    /* Button hover animation */
+    #submitBtn {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #submitBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(26,58,143,0.3);
+    }
+    #submitBtn:active {
+      transform: translateY(0);
+    }
+    
+    /* FAQ item hover */
+    .faq-item {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .faq-item:hover {
+      transform: translateX(5px);
+    }
+    
+    /* Animation pour le formulaire */
+    .contact-form-container {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Animation pour les icônes sociales */
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: translateY(-3px) scale(1.1);
     }
   </style>
 </head>
@@ -229,10 +354,10 @@
   </div>
 
   <!-- ======= NAVBAR ======= -->
-  <nav class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <nav class="w-full bg-white shadow-sm sticky top-0 z-50 animate-navbar">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
       <div class="flex items-center gap-2 select-none">
-        <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-md">
+        <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shadow-md logo-icon">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V10l7-5 7 5v11M9 21V14h6v7" />
           </svg>
@@ -279,9 +404,9 @@
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full">
       <div class="max-w-xl">
-        <h1 class="text-white text-3xl md:text-4xl font-extrabold leading-tight mb-4">Contactez-nous</h1>
-        <p class="text-blue-100 text-base md:text-lg mb-6 font-body">Un projet ? Une question ? Notre équipe est à votre écoute pour vous accompagner.</p>
-        <div class="flex gap-3 text-white/80 text-sm"><span>📞 01 23 45 67 89</span><span>✉️ contact@entreprisebtp.com</span></div>
+        <h1 class="text-white text-3xl md:text-4xl font-extrabold leading-tight mb-4 animate-fade-left">Contactez-nous</h1>
+        <p class="text-blue-100 text-base md:text-lg mb-6 font-body animate-fade-left delay-200">Un projet ? Une question ? Notre équipe est à votre écoute pour vous accompagner.</p>
+        <div class="flex gap-3 text-white/80 text-sm animate-fade-up delay-300"><span>📞 {{ $company->phone ?? '' }}</span><span>✉️ {{ $company->email ?? '' }}</span></div>
       </div>
     </div>
   </section>
@@ -290,32 +415,32 @@
   <section id="contact" class="py-6 bg-gradient-to-b from-gray-50 to-white scroll-mt-20">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-8">
-        <div class="w-20 h-1 bg-brand mx-auto mb-4 rounded-full"></div>
-        <h2 class="text-2xl font-heading font-bold text-brand mb-3">Parlons de votre projet</h2>
-        <p class="text-gray-500 max-w-xl mx-auto">Remplissez le formulaire ci-dessous, réponse sous 24h.</p>
+        <div class="w-20 h-1 bg-brand mx-auto mb-4 rounded-full transition-all duration-300"></div>
+        <h2 class="text-2xl font-heading font-bold text-brand mb-3 animate-scale">Parlons de votre projet</h2>
+        <p class="text-gray-500 max-w-xl mx-auto animate-fade-up delay-200">Remplissez le formulaire ci-dessous, réponse sous 24h.</p>
       </div>
 
-      <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-gray-100">
+      <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-gray-100 contact-form-container">
         <form class="space-y-6" id="contactForm">
           @csrf
 
           <div class="grid md:grid-cols-2 gap-5">
-            <div>
+            <div class="form-field">
               <label class="label block text-sm font-semibold text-gray-700 mb-2">Nom complet *</label>
               <input name="nom" type="text" placeholder="Dupont Jean" required class="w-full" id="nom">
             </div>
-            <div>
+            <div class="form-field">
               <label class="label block text-sm font-semibold text-gray-700 mb-2">Email *</label>
               <input name="email" type="email" placeholder="jean@email.com" required class="w-full" id="email">
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-5">
-            <div>
+            <div class="form-field">
               <label class="label block text-sm font-semibold text-gray-700 mb-2">Téléphone</label>
               <input name="telephone" type="tel" placeholder="01 23 45 67 89" class="w-full" id="telephone">
             </div>
-            <div>
+            <div class="form-field">
               <label class="label block text-sm font-semibold text-gray-700 mb-2">Type de projet *</label>
               <select name="type_projet" required class="w-full" id="type_projet">
                 <option value="">Sélectionnez</option>
@@ -328,17 +453,17 @@
             </div>
           </div>
 
-          <div>
+          <div class="form-field">
             <label class="label block text-sm font-semibold text-gray-700 mb-2">Localisation</label>
             <input name="localisation" type="text" placeholder="Ville / Code postal" class="w-full" id="localisation">
           </div>
 
-          <div>
+          <div class="form-field">
             <label class="label block text-sm font-semibold text-gray-700 mb-2">Budget prévisionnel</label>
             <input name="budget" type="text" placeholder="Min (€)" class="w-full" id="budget">
           </div>
 
-          <div>
+          <div class="form-field">
             <label class="label block text-sm font-semibold text-gray-700 mb-2">Description du projet *</label>
             <textarea name="message" rows="5" required placeholder="Décrivez votre projet..." class="w-full" id="message"></textarea>
           </div>
@@ -358,8 +483,8 @@
   <section class="py-12 bg-gray-50">
     <div class="max-w-3xl mx-auto px-6">
       <div class="text-center mb-8">
-        <div class="w-16 h-1 bg-brand mx-auto mb-4"></div>
-        <h2 class="text-2xl font-heading font-bold text-brand">Questions fréquentes</h2>
+        <div class="w-16 h-1 bg-brand mx-auto mb-4 transition-all duration-300"></div>
+        <h2 class="text-2xl font-heading font-bold text-brand animate-scale">Questions fréquentes</h2>
       </div>
       <div class="space-y-4">
         <div class="faq-item bg-white rounded-2xl border shadow-sm">
@@ -393,47 +518,82 @@
     </div>
   </section>
 
-  <footer class="bg-brand-dark text-white pt-20 pb-10">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
-      <div>
-        <h3 class="text-2xl font-heading font-bold mb-4">Entreprise BTP</h3>
-        <p class="text-blue-300 text-sm leading-relaxed mb-6">Spécialistes en construction et rénovation, nous réalisons vos projets avec exigence, qualité et savoir-faire.</p>
-        <div class="flex gap-4">
-          <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">f</div>
-          <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">in</div>
-          <div class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">ig</div>
-        </div>
-      </div>
-      <div>
-        <h4 class="font-heading font-semibold mb-5">Navigation</h4>
-        <ul class="space-y-3 text-blue-300 text-sm">
-          <li><a href="#presentation" class="hover:text-white transition">Présentation</a></li>
-          <li><a href="{{ route('realisations')}}" class="hover:text-white transition">Réalisations</a></li>
-          <li><a href="{{ route('services')}}" class="hover:text-white transition">Services</a></li>
-          <li><a href="{{ route('contact')}}" class="hover:text-white transition">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-heading font-semibold mb-5">Contact</h4>
-        <ul class="space-y-3 text-blue-300 text-sm">
-          <li>📞 01 23 45 67 89</li>
-          <li>✉️ info@entreprisebtp.com</li>
-          <li>📍 Paris, France</li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-heading font-semibold mb-5">Un projet ?</h4>
-        <p class="text-blue-300 text-sm mb-6">Obtenez un devis gratuit rapidement.</p>
+  <footer class="bg-brand-dark text-white pt-16 pb-6">
+
+  <!-- TOP FOOTER -->
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+    <!-- BRAND -->
+    <div class="footer-section">
+      <h3 class="text-xl font-heading font-bold mb-4">
+        Entreprise BTP
+      </h3>
+
+      <p class="text-blue-300 text-sm leading-relaxed mb-5">
+        Spécialistes en construction et rénovation,
+        nous réalisons vos projets avec exigence et savoir-faire.
+      </p>
+
+      <!-- Social -->
+      <div class="flex gap-3">
+        <div class="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 cursor-pointer">f</div>
+        <div class="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 cursor-pointer">in</div>
+        <div class="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 cursor-pointer">ig</div>
       </div>
     </div>
-    <div class="border-t border-blue-700 mt-14 pt-6 flex flex-col md:flex-row justify-between items-center text-blue-400 text-sm gap-4">
+
+    <!-- NAVIGATION -->
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-2 text-blue-300 text-sm">
+        <li><a href="{{ route('presentations') }}" class="hover:text-white transition">Présentation</a></li>
+        <li><a href="{{ route('realisations')}}" class="hover:text-white transition">Réalisations</a></li>
+        <li><a href="{{ route('services')}}" class="hover:text-white transition">Services</a></li>
+        <li><a href="{{ route('contact')}}" class="hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Contact</h4>
+      <ul class="space-y-2 text-blue-300 text-sm">
+        <li>📞 {{ $company->phone ?? '' }}</li>
+        <li>✉️ {{ $company->email ?? '' }}</li>
+        <li>📍 {{ $company->address ?? '' }}</li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="footer-section">
+      <h4 class="font-heading font-semibold mb-4">Un projet ?</h4>
+      <p class="text-blue-300 text-sm mb-4">
+        Obtenez un devis gratuit rapidement.
+      </p>
+
+      <a href="{{ route('contact') }}"
+         class="inline-block bg-blue-500 hover:bg-blue-600 text-white text-sm px-5 py-2 rounded-md transition cta-button">
+        Demander un devis
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM FOOTER -->
+  <div class="border-t border-white/10 mt-10 pt-5">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-blue-400 text-sm text-center">
+
       <span>© 2026 Entreprise BTP — Tous droits réservés</span>
-      <div class="flex gap-6">
+
+      <div class="flex items-center gap-4">
         <a href="#" class="hover:text-white transition">Mentions légales</a>
+        <span class="hidden md:inline">|</span>
         <a href="#" class="hover:text-white transition">Confidentialité</a>
       </div>
+
     </div>
-  </footer>
+  </div>
+
+</footer>
 
   <script>
     // FAQ Accordion
@@ -562,6 +722,42 @@
     // Mobile menu
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // ========== NOUVEAU: Animation au scroll ==========
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observer les éléments à animer
+    document.querySelectorAll('.faq-item, .footer-section, .office-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Animation supplémentaire pour les titres de section
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          titleObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('h2').forEach(el => {
+      if (el.classList.contains('animate-scale')) {
+        titleObserver.observe(el);
+      }
     });
   </script>
 </body>

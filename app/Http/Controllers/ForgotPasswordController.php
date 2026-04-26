@@ -25,7 +25,7 @@ class ForgotPasswordController extends Controller
         );
     
         if ($status === Password::RESET_LINK_SENT) {
-            return back()->with('success', 'Lien de réinitialisation envoyé par email !');
+            return back()->with('status', 'Lien de réinitialisation envoyé par email !');
         }
     
         return back()->withErrors([

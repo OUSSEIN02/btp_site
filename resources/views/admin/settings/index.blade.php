@@ -63,41 +63,63 @@
             + Ajouter un service
         </button>
 
-        <table class="w-full border border-gray-200 rounded">
-            <thead class="bg-gray-100">
+        <table class="w-full text-sm text-left text-gray-600" style="border: 3px solid #e5e7eb;">
+
+            <!-- HEADER -->
+            <thead class="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm uppercase tracking-wider">
                 <tr>
-                    <th class="p-3 text-left">Titre</th>
-                    <th class="p-3 text-left">Description</th>
-                    <th class="p-3 text-center">Actions</th>
+                    <th class="px-6 py-4">Titre</th>
+                    <th class="px-6 py-4 hidden md:table-cell">Description</th>
+                    <th class="px-6 py-4 text-center">Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($services as $service)
-                <tr class="border-t">
-                    <td class="p-3">{{ $service->title }}</td>
-                    <td class="p-3">{{ $service->description }}</td>
-                    <td class="p-3 text-center">
 
-                        {{-- FORMULAIRE DELETE --}}
+            <!-- BODY -->
+            <tbody class="divide-y divide-gray-100">
+
+                @foreach($services as $service)
+                <tr class="hover:bg-blue-50 transition duration-200">
+
+                    <!-- TITRE -->
+                    <td class="px-6 py-4 font-semibold text-gray-800">
+                        {{ $service->title }}
+                        
+                        <!-- Description affichée sous le titre en mobile -->
+                        <p class="text-xs text-gray-500 mt-1 md:hidden">
+                            {{ Str::limit($service->description, 80) }}
+                        </p>
+                    </td>
+
+                    <!-- DESCRIPTION (desktop uniquement) -->
+                    <td class="px-6 py-4 text-gray-500 hidden md:table-cell">
+                        {{ Str::limit($service->description, 120) }}
+                    </td>
+
+                    <!-- ACTIONS -->
+                    <td class="px-6 py-4 text-center">
+
+                        <!-- FORM DELETE -->
                         <form id="delete-form-{{ $service->id }}" 
-                              action="{{ route('admin.services.destroy', $service->id) }}" 
-                              method="POST">
+                            action="{{ route('admin.services.destroy', $service->id) }}" 
+                            method="POST">
                             @csrf
                             @method('DELETE')
                         </form>
 
-                        {{-- BOUTON SUPPRIMER --}}
+                        <!-- BUTTON DELETE -->
                         <button type="button"
                             onclick="confirmDelete({{ $service->id }})"
-                            class="text-red-500 hover:text-red-700 font-medium">
-                            Supprimer
+                            class="inline-flex items-center gap-1 px-4 py-2 text-xs font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 hover:text-red-700 transition duration-200">
+                            
+                            🗑 Supprimer
                         </button>
 
                     </td>
                 </tr>
                 @endforeach
+
             </tbody>
-        </table>
+            </table>
 
         {{-- MODAL AJOUT --}}
         <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">

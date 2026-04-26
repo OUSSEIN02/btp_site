@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réinitialisation Administrateur</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background-image: url('https://images.unsplash.com/photo-1549742324-b463bc9dd374?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+        background: linear-gradient(135deg, #1a3a8f 0%, #2a52bf 100%);
+    }
+</style>
+ 
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-4">
